@@ -13,6 +13,7 @@ class User{
         string address;
     public:
         User(string name, string egn, string address);
+        virtual ~User() {};
         string getName() const;
         string getEgn() const;
         string getAddress() const;
