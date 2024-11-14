@@ -1,5 +1,6 @@
 #include "User.h"
 #include "Validation.h"
+#include <algorithm>
 
 User::User(string name, string egn, string address){
     if(!Validation::isEgnCorrect(egn)){
@@ -27,6 +28,7 @@ void User::setName(string name){
 }
 
 void User::setEgn(string egn){
+    egn.erase(std::remove_if(egn.begin(), egn.end(), ::isspace), egn.end());
     this->egn = egn;
 }
 

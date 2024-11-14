@@ -18,6 +18,7 @@ public:
     void addOwner(const Owner& owner);
     void displayMatchingAddressOwners() const;
     void displayPropertiesByEgn(const string& egn) const;
+    vector<Owner>& getOwners();
 };
 
 #endif

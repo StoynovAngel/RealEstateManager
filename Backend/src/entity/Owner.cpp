@@ -36,7 +36,6 @@ void Owner::addProperty(const string& property) {
 }
 
 void Owner::displayProperties() const {
-    cout << "Properties owned by " << getName() << ":" << endl;
     for (int i = 0; i < propertyCounter; ++i) {
         cout << "- " << adr[i] << endl;
     }
