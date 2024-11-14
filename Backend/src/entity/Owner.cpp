@@ -14,6 +14,17 @@ Owner::~Owner(){
     }
 }
 
+Owner::Owner(const Owner& other) : User(other), propertyCounter(other.propertyCounter){
+    for(int i = 0; i < propertyCounter; ++i){
+        if(other.adr[i]){
+            adr[i] = new char[strlen(other.adr[i])+1];
+            strcpy(adr[i], other.adr[i]);
+        }else{
+            adr[i] = nullptr;
+        }
+    }
+}
+
 void Owner::addProperty(const string& property) {
     if (propertyCounter < 5) {
         adr[propertyCounter] = new char[property.length() + 1];
@@ -42,4 +53,31 @@ ostream& operator<<(ostream& os, const Owner& owner) {
         }
     }
     return os;
+}
+
+void Owner::displayMatchingInfo() const{
+    bool match = false;
+    for (int i = 0; i < propertyCounter; ++i){
+        if(adr[i] != nullptr && strcmp(adr[i], getAddress().c_str()) == 0){
+            cout << "Match found \n";
+            cout << *this;
+            match = true;
+            break;
+
+        }
+    }
+    if(!match) {
+        cout << "No match found. \n";
+    }
+}
+
+int Owner::getPropertyCounter() const {
+    return propertyCounter;
+}
+
+const char* Owner::getProperty(int index) const {
+    if (index >= 0 && index < propertyCounter) {
+        return adr[index];
+    }
+    return nullptr;
 }
