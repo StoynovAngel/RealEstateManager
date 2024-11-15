@@ -4,7 +4,9 @@ void PropertyManager::addOwner(const Owner& owner) {
     owners.push_back(owner);
 }
 
-void PropertyManager::displayMatchingAddressOwners() const {
+void PropertyManager::displayMatchingAddressOwners() {
+    FileHandler::loadFromFile(owners);
+
     bool matchFound = false;
     for (const auto& owner : owners) {
         for (int i = 0; i < owner.getPropertyCounter(); ++i) {

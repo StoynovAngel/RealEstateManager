@@ -1,8 +1,12 @@
-Name: AAAAAAAAAAAA Johnson Egn: 0345093460 Address: 123 Oak St
+Name: Alice Johnson
+Address: 123 Oak St
+Egn: 0355102030
 Properties:
 - 123 Oak St
 - 456 Pine St
-Name: Bob Smith Egn: 0987654321 Address: 789 Birch Ave
+Name: Bob Smith
+Address: 789 Birch Ave
+Egn: 0987654321
 Properties:
 - 321 Elm St
 - 654 Cedar Rd

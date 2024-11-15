@@ -7,6 +7,7 @@
 #include <cstring>
 #include <algorithm>
 #include "Owner.h"
+#include "FileHandler.h"
 
 using namespace std;
 
@@ -16,7 +17,7 @@ private:
 
 public:
     void addOwner(const Owner& owner);
-    void displayMatchingAddressOwners() const;
+    void displayMatchingAddressOwners();
     void displayPropertiesByEgn(const string& egn) const;
     vector<Owner>& getOwners();
 };

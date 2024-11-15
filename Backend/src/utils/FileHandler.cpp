@@ -15,7 +15,7 @@ void FileHandler::saveToFile(const vector<Owner>& owners){
         outFile << owner;
     }
     outFile.close();
-    cout << "Data saved successfully" << endl;
+    
 }
 
 
@@ -29,45 +29,43 @@ void FileHandler::loadFromFile(vector<Owner>& owners) {
     owners.clear();
 
     string line, name, egn, address;
-    int propertyCount = 0;
+    vector<string> properties;
 
     while (getline(inFile, line)) {
-        // Read "Name: "
         if (line.find("Name: ") == 0) {
-            name = line.substr(6);  // Extract the name after "Name: "
-            cout << "Loaded Name: " << name << endl;
-
-            // Read the next line for "Egn: "
-            getline(inFile, line);
-            if (line.find("Egn: ") == 0) {
-                egn = line.substr(5);  // Extract the EGN after "Egn: "
-                egn.erase(remove_if(egn.begin(), egn.end(), ::isspace), egn.end()); // Trim whitespace
-                cout << "Loaded EGN (after trimming): '" << egn << "'" << endl;
-            }
-
-            // Read the next line for "Address: "
-            getline(inFile, line);
-            if (line.find("Address: ") == 0) {
-                address = line.substr(9);  // Extract the address after "Address: "
-                cout << "Loaded Address: " << address << endl;
-            }
-
-            // Read the next line for "Properties:"
-            getline(inFile, line);
-            if (line == "Properties:") {
+            if (!name.empty()) {
                 Owner owner(name, egn, address);
-
-                // Now read each property line starting with "- "
-                while (getline(inFile, line) && line.find("- ") == 0) {
-                    string property = line.substr(2);  // Extract property after "- "
-                    cout << "Loaded Property: " << property << endl;
+                for (const auto& property : properties) {
                     owner.addProperty(property);
-                    propertyCount++;
                 }
-
                 owners.push_back(owner);
-            }
+                name.clear();
+                egn.clear();
+                address.clear();
+                properties.clear();
+            }          
+            name = line.substr(6);  
+
+        } else if (line.find("Address: ") == 0) {
+            address = line.substr(9);     
+        } else if (line.find("Egn: ") == 0) {
+            egn = line.substr(5);  
+            egn.erase(remove_if(egn.begin(), egn.end(), ::isspace), egn.end());           
+        } else if (line == "Properties:") {
+            properties.clear();
+        } else if (line.find("- ") == 0) {
+            string property = line.substr(2);         
+            properties.push_back(property);
         }
     }
+    
+    if (!name.empty()) {
+        Owner owner(name, egn, address);
+        for (const auto& property : properties) {
+            owner.addProperty(property);
+        }
+        owners.push_back(owner);
+    }
     inFile.close();
+    
 }

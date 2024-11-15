@@ -1,8 +1,9 @@
 #include <iostream>
-#include "User.h"
-#include "Owner.h"
-#include "PropertyManager.h"
+#include "Menu.h"
 
 int main() {
+    Menu menu;
+    menu.menuHandler();
+
     return 0;
 }

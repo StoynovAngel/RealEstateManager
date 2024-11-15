@@ -37,7 +37,7 @@ void User::setAddress(string address){
 }
 
 ostream& operator<<(ostream& os, const User& user){
-    os << "Name: " << user.getName() << " Egn: " << user.getEgn() << " Address: " << user.getAddress() << std::endl;
+    os << "Name: " << user.getName() << "\nAddress: " << user.getAddress()  << "\nEgn: " << user.getEgn() << std::endl;
     return os;
 }
 
