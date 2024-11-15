@@ -8,6 +8,7 @@
 #include <algorithm>
 #include "Owner.h"
 #include "FileHandler.h"
+#include "Validation.h"
 
 using namespace std;
 
@@ -18,7 +19,7 @@ private:
 public:
     void addOwner(const Owner& owner);
     void displayMatchingAddressOwners();
-    void displayPropertiesByEgn(const string& egn) const;
+    void displayPropertiesByEgn();
     vector<Owner>& getOwners();
 };
 
