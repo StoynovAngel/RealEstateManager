@@ -1,12 +1,24 @@
-Name: Alice Johnson
-Address: 123 Oak St
-Egn: 0355102030
+Name: Angel Stoynov
+Address: Bolnichna 40
+Egn: 0345093450
 Properties:
-- 123 Oak St
-- 456 Pine St
-Name: Bob Smith
-Address: 789 Birch Ave
-Egn: 0987654321
+- Bolnichna 40
+- Plovdivska 37
+- Stephan Stamboliiski 10
+- K Velichkov
+- Bolnichna 37
+Name: Lyubomir Vasilev
+Address: dunav 10
+Egn: 1234567890
 Properties:
-- 321 Elm St
-- 654 Cedar Rd
+- No properties owned
+Name: Lyubomir Vasilev
+Address: dunav 10
+Egn: 1234567890
+Properties:
+- No properties owned
+Name: Koceto K
+Address: liverpool st 3
+Egn: 0434567890
+Properties:
+- malo konare

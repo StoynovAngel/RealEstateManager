@@ -3,9 +3,11 @@
 
 #include <vector>
 #include <string>
+#include <stdexcept>
 #include <iostream>
 #include <cstring>
 #include <algorithm>
+#include <limits>
 #include "Owner.h"
 #include "FileHandler.h"
 #include "Validation.h"
@@ -17,7 +19,8 @@ private:
     vector<Owner> owners;
 
 public:
-    void addOwner(const Owner& owner);
+    void addOwner();
+    Owner addOwnerHandler();
     void displayMatchingAddressOwners();
     void displayPropertiesByEgn();
     vector<Owner>& getOwners();

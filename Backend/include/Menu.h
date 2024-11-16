@@ -25,6 +25,7 @@ class Menu {
                 switch (choice){
                     case 1: propertyManager.displayMatchingAddressOwners(); break;
                     case 2: propertyManager.displayPropertiesByEgn(); break;
+                    case 3: propertyManager.addOwner(); break;
                     case 0: cout << "Stopping...\n"; break;
                     default: cout << "Invalid choice try again.\n"; break;
                 }

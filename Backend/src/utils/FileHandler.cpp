@@ -5,7 +5,7 @@
 #include <cctype>
 
 void FileHandler::saveToFile(const vector<Owner>& owners){
-    ofstream outFile("owners.txt");
+    ofstream outFile("owners.txt", ios::app);
     if (!outFile) {
         cerr << "Error: Could not open file for writing: " << endl;
         return;

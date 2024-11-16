@@ -1,9 +1,11 @@
 #include "PropertyManager.h"
 
-void PropertyManager::addOwner(const Owner& owner) {
-    owners.push_back(owner);
-}
+using namespace std;
 
+void PropertyManager::addOwner() {
+    owners.push_back(addOwnerHandler());
+    FileHandler::saveToFile(owners);
+}
 void PropertyManager::displayMatchingAddressOwners() {
     FileHandler::loadFromFile(owners);
 
@@ -32,7 +34,7 @@ void PropertyManager::displayPropertiesByEgn() {
     bool found = false;
     for (const auto& owner : owners) {
         if (owner.getEgn() == egn) {
-            cout << "Properties owned by " << owner.getName() << ":\n";
+            cout << "\nProperties owned by " << owner.getName() << "\n";
             owner.displayProperties();
             found = true;
             break;
@@ -46,4 +48,35 @@ void PropertyManager::displayPropertiesByEgn() {
 
 vector<Owner>& PropertyManager::getOwners(){
     return owners;
+}
+
+Owner PropertyManager::addOwnerHandler(){
+    string name, egn, address, properties;
+    int counter = 0;
+
+    cout << "Enter name: ";
+    cin.ignore();
+    getline(cin, name);
+
+    cout << "Enter address: ";
+    getline(cin, address); 
+
+    cout << "Enter egn: ";
+    cin >> egn; 
+
+    if (!Validation::isEgnCorrect(egn)) {
+        throw invalid_argument("Incorrect egn. It must be 10 digits.");
+    }
+
+    cin.ignore();
+    Owner owner(name, egn, address);
+
+    while (counter < 5) {
+        cout << "Enter property name (type 'done' to exit): ";
+        getline(cin, properties);
+        if (properties == "done") break;
+        owner.addProperty(properties);
+        ++counter;
+    }
+    return owner;
 }
