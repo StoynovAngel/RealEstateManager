@@ -4,8 +4,15 @@
 #include <algorithm>
 #include <cctype>
 
+namespace fs = std::filesystem;
+const fs::path directory = "files";
+const fs::path filePath = directory / "owners.txt";
+
 void FileHandler::saveToFile(const vector<Owner>& owners){
-    ofstream outFile("owners.txt", ios::app);
+    if (!fs::exists(directory)) {
+        fs::create_directory(directory);
+    }
+    ofstream outFile(filePath, ios::app);
     if (!outFile) {
         cerr << "Error: Could not open file for writing: " << endl;
         return;
@@ -20,7 +27,7 @@ void FileHandler::saveToFile(const vector<Owner>& owners){
 
 
 void FileHandler::loadFromFile(vector<Owner>& owners) {
-    ifstream inFile("owners.txt");
+    ifstream inFile(filePath);
     if (!inFile) {
         cerr << "Error: Could not open file for reading." << endl;
         return;
