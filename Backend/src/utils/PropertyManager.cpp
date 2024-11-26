@@ -28,8 +28,10 @@ void PropertyManager::displayMatchingAddressOwners() {
 void PropertyManager::displayPropertiesByEgn() {
     FileHandler::loadFromFile(owners);
     string egn;
+
     cout << "Enter egn: ";
     cin >> egn;
+    
     if(!Validation::isEgnCorrect(egn)) throw invalid_argument("Incorrect egn. It must be 10 letters");
     bool found = false;
     for (const auto& owner : owners) {

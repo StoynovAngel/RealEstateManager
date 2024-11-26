@@ -54,22 +54,6 @@ ostream& operator<<(ostream& os, const Owner& owner) {
     return os;
 }
 
-void Owner::displayMatchingInfo() const{
-    bool match = false;
-    for (int i = 0; i < propertyCounter; ++i){
-        if(adr[i] != nullptr && strcmp(adr[i], getAddress().c_str()) == 0){
-            cout << "Match found \n";
-            cout << *this;
-            match = true;
-            break;
-
-        }
-    }
-    if(!match) {
-        cout << "No match found. \n";
-    }
-}
-
 int Owner::getPropertyCounter() const {
     return propertyCounter;
 }
